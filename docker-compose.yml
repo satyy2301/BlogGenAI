@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  # Python Backend (FastAPI)
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONUNBUFFERED=1
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    volumes:
+      - ./output:/app/output
+      - ./src:/app/src
+      - ./config:/app/config
+    command: uvicorn api:app --host 0.0.0.0 --port 8000 --reload
+
+  # React Frontend (Vite)
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_API_URL=http://localhost:8000
+    volumes:
+      - ./frontend/src:/app/src
+      - ./frontend/public:/app/public
+    command: npm run dev
+    depends_on:
+      - backend
+
+volumes:
+  output:
