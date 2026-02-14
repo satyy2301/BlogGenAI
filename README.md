@@ -2,6 +2,10 @@
 
 **A powerful agent-based blog generation system using LangChain and OpenAI GPT-3.5**
 
+<img width="1518" height="823" alt="image" src="https://github.com/user-attachments/assets/458fc04b-2179-4a15-b203-8b3a5a010653" />
+
+<img width="1115" height="825" alt="image" src="https://github.com/user-attachments/assets/a254a2cd-934a-4cdd-9622-338e06a0aaff" />
+
 ## Overview
 
 This project implements an intelligent blog generation system that leverages:
