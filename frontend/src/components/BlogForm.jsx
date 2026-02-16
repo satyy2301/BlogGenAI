@@ -35,15 +35,17 @@ export function BlogForm({ onBlogGenerated }) {
   }
 
   return (
-    <Card className="p-8 bg-white dark:bg-gray-800 rounded-xl shadow-lg border-0 sticky top-8">
+    <Card className="p-8 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-2xl border-2 border-indigo-100 dark:border-indigo-900/50 sticky top-8 hover:shadow-indigo-200 dark:hover:shadow-indigo-900/50 transition-all duration-300">
       <div className="space-y-6">
         {/* Header */}
-        <div>
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-            ✨ Generate Blog
+        <div className="relative">
+          <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-indigo-500 to-blue-500 rounded-xl opacity-20 blur-lg"></div>
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-2 relative">
+            <span className="text-3xl">✨</span>
+            <span>Create New Blog</span>
           </h2>
-          <p className="text-gray-600 dark:text-gray-400 text-sm mt-1">
-            Enter any topic and let AI create a professional blog
+          <p className="text-gray-600 dark:text-gray-400 text-sm mt-2">
+            Enter any topic and let AI create a professional blog using research and GPT-3.5
           </p>
         </div>
 
@@ -70,24 +72,30 @@ export function BlogForm({ onBlogGenerated }) {
           <Button
             type="submit"
             disabled={loading}
-            className="w-full py-6 text-base font-semibold bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white rounded-lg transition-all duration-300 disabled:opacity-50"
+            className="w-full py-7 text-base font-bold bg-gradient-to-r from-indigo-600 via-blue-600 to-purple-600 hover:from-indigo-700 hover:via-blue-700 hover:to-purple-700 text-white rounded-xl transition-all duration-300 disabled:opacity-50 shadow-lg hover:shadow-xl hover:scale-105 transform"
           >
             {loading ? (
               <span className="flex items-center justify-center gap-3">
                 <LoadingSpinner />
-                <span>Generating Blog... (30-60s)</span>
+                <span className="font-semibold">Generating Blog... (30-60s)</span>
               </span>
             ) : (
-              <span className="flex items-center justify-center gap-2">
-                <span>🚀</span>
-                <span>Generate Blog</span>
+              <span className="flex items-center justify-center gap-3">
+                <span className="text-xl">🚀</span>
+                <span>Generate Blog with AI</span>
               </span>
             )}
           </Button>
 
           {loading && (
-            <div className="p-3 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg text-blue-700 dark:text-blue-300 text-sm text-center">
-              🔬 Researching your topic... 📝 Writing the blog...
+            <div className="p-4 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border-2 border-blue-200 dark:border-blue-800 rounded-xl text-blue-700 dark:text-blue-300 text-sm text-center animate-pulse">
+              <div className="space-y-2">
+                <div className="flex items-center justify-center gap-2">
+                  <span>🔬</span>
+                  <span className="font-semibold">AI Research in Progress...</span>
+                </div>
+                <div className="text-xs text-gray-600 dark:text-gray-400">Searching Wikipedia & Web • Analyzing Data • Writing Content</div>
+              </div>
             </div>
           )}
         </form>

@@ -50,20 +50,20 @@ export function BlogCard({ blog, onDelete, onView }) {
   }
 
   return (
-    <Card className="p-6 hover:shadow-xl transition-all duration-300 border-l-4 border-l-indigo-600 hover:border-l-indigo-700">
+    <Card className="p-6 hover:shadow-2xl transition-all duration-300 border-l-4 border-l-indigo-600 hover:border-l-blue-600 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm hover:scale-[1.02] group">
       <div className="space-y-4">
         {/* Header */}
         <div className="flex justify-between items-start gap-3">
           <div className="flex-1 min-w-0">
             <h3
-              className="text-lg font-bold text-gray-900 dark:text-white line-clamp-2 cursor-pointer hover:text-indigo-600 transition"
+              className="text-xl font-bold text-gray-900 dark:text-white line-clamp-2 cursor-pointer hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors group-hover:underline decoration-indigo-500 decoration-2 underline-offset-4"
               onClick={() => onView && onView(blog)}
             >
               {blog.title}
             </h3>
           </div>
-          <Badge variant="secondary" className="whitespace-nowrap">
-            {formatDate(blog.createdAt)}
+          <Badge variant="secondary" className="whitespace-nowrap bg-indigo-100 text-indigo-700 dark:bg-indigo-900 dark:text-indigo-200">
+            📅 {formatDate(blog.createdAt)}
           </Badge>
         </div>
 
@@ -73,12 +73,12 @@ export function BlogCard({ blog, onDelete, onView }) {
         </p>
 
         {/* Stats */}
-        <div className="flex gap-4 text-xs text-gray-500 dark:text-gray-400 py-3 border-t border-b border-gray-200 dark:border-gray-700">
-          <span className="flex items-center gap-1">
-            📖 {Math.ceil(blog.content.length / 200)} min
+        <div className="flex gap-6 text-sm text-gray-600 dark:text-gray-400 py-3 px-4 bg-gradient-to-r from-gray-50 to-indigo-50 dark:from-gray-900 dark:to-indigo-900/20 rounded-lg">
+          <span className="flex items-center gap-2 font-medium">
+            <span className="text-base">📖</span> {Math.ceil(blog.content.length / 200)} min read
           </span>
-          <span className="flex items-center gap-1">
-            📝 {blog.content.length} chars
+          <span className="flex items-center gap-2 font-medium">
+            <span className="text-base">📝</span> {blog.content.length.toLocaleString()} chars
           </span>
         </div>
 
@@ -88,10 +88,10 @@ export function BlogCard({ blog, onDelete, onView }) {
             variant="default"
             size="sm"
             onClick={() => onView && onView(blog)}
-            className="flex-1 bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700"
+            className="flex-1 bg-gradient-to-r from-indigo-600 via-blue-600 to-purple-600 hover:from-indigo-700 hover:via-blue-700 hover:to-purple-700 shadow-md hover:shadow-lg transform hover:scale-105 transition-all font-semibold"
           >
-            <Eye className="w-4 h-4 mr-1" />
-            View Full
+            <Eye className="w-4 h-4 mr-2" />
+            View Full Blog
           </Button>
           <Button
             variant="outline"

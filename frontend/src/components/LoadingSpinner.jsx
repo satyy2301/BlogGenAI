@@ -1,8 +1,14 @@
-export function LoadingSpinner() {
+export function LoadingSpinner({ size = "sm" }) {
+  const sizeClasses = {
+    sm: "w-5 h-5",
+    md: "w-8 h-8",
+    lg: "w-12 h-12"
+  }
+
   return (
     <div className="inline-block animate-spin">
       <svg
-        className="w-4 h-4"
+        className={sizeClasses[size]}
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
